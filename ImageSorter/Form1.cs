@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace ImageSorter
 {
-    public partial class formMain : Form
+    public partial class FormMain : Form
     {
-        public formMain()
+        public FormMain()
         {
             InitializeComponent();
 
@@ -18,7 +18,7 @@ namespace ImageSorter
             groupBoxOut.AllowDrop = true;
         }
 
-        private void buttonIn_Click(object sender, EventArgs e)
+        private void ButtonIn_Click(object sender, EventArgs e)
         {
             if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
             {
@@ -26,7 +26,7 @@ namespace ImageSorter
             }
         }
 
-        private void buttonOut_Click(object sender, EventArgs e)
+        private void ButtonOut_Click(object sender, EventArgs e)
         {
             if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
             {
@@ -34,13 +34,13 @@ namespace ImageSorter
             }
         }
 
-        private void groupBoxIn_DragEnter(object sender, DragEventArgs e)
+        private void GroupBoxIn_DragEnter(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop) && ((e.AllowedEffect & DragDropEffects.Move) == DragDropEffects.Move))
-            e.Effect = DragDropEffects.Move;
+                e.Effect = DragDropEffects.Move;
         }
 
-        private void groupBoxIn_DragDrop(object sender, DragEventArgs e)
+        private void GroupBoxIn_DragDrop(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop) && e.Effect == DragDropEffects.Move)
             {
@@ -50,13 +50,13 @@ namespace ImageSorter
             }
         }
 
-        private void groupBoxOut_DragEnter(object sender, DragEventArgs e)
+        private void GroupBoxOut_DragEnter(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop) && ((e.AllowedEffect & DragDropEffects.Move) == DragDropEffects.Move))
                 e.Effect = DragDropEffects.Move;
         }
 
-        private void groupBoxOut_DragDrop(object sender, DragEventArgs e)
+        private void GroupBoxOut_DragDrop(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop) && e.Effect == DragDropEffects.Move)
             {
@@ -66,16 +66,70 @@ namespace ImageSorter
             }
         }
 
-        private void buttonGo_Click(object sender, EventArgs e)
+        private void ButtonGo_Click(object sender, EventArgs e)
         {
-            listBox1.DataSource = null;
-            listBox1.Items.Clear();
-            listBox1.DataSource = GetFiles(textBoxIn.Text, "*.jpg", checkBoxHandleNestedDirectories.Checked);
+            labelProgress.Text = "Обработка начата...";
+
+            List<string> SortFiles = new List<string>();
+
+            SortFiles = GetFiles(textBoxIn.Text, "*.jpg", checkBoxHandleNestedDirectories.Checked);
+
+            progressBar.Maximum = SortFiles.Count;
+
+            foreach (string sf in SortFiles)
+            {
+                if (ProcessinFiles(textBoxIn.Text, textBoxOut.Text, Path.GetFileName(sf.ToString()), checkBoxMoveFiles.Checked))
+                {
+                    textBoxLog.Text += "Обработан файл: " + Path.GetFileName(sf.ToString()) + '\r' + '\n';
+                    labelProgress.Text = "Обработан файл: " + Path.GetFileName(sf.ToString());
+                }
+                else
+                {
+                    textBoxLog.Text += "Ошибка обработки файла: " + Path.GetFileName(sf.ToString()) + '\r' + '\n';
+                    labelProgress.Text = "Ошибка обработки файла: " + Path.GetFileName(sf.ToString());
+                }
+
+                textBoxLog.SelectionStart = textBoxLog.Text.Length - 1;
+                textBoxLog.ScrollToCaret();
+                progressBar.Value += 1;
+                Application.DoEvents();
+            }
+
+            labelProgress.Text = "Обработка файлов окончена.";
+            textBoxLog.Text += "Обработка файлов окончена.";
+            textBoxLog.SelectionStart = textBoxLog.Text.Length - 1;
+            textBoxLog.ScrollToCaret();
+        }
+
+        private Boolean ProcessinFiles(string inpath, string outpath, string filename, Boolean movefiles)
+        {
+            Boolean status = true;
+
+            string infile = Path.Combine(inpath, filename);
+            string outfile = Path.Combine(outpath, filename);
+
+            try
+            {
+                if (movefiles)
+                {
+                    File.Move(Path.Combine(inpath, filename), Path.Combine(outpath, filename));
+                }
+                else
+                {
+                    File.Copy(Path.Combine(inpath, filename), Path.Combine(outpath, filename));
+                }
+            }
+            catch
+            {
+                status = false;
+            }
+
+            return status;
         }
 
         private List<string> GetFiles(string path, string pattern, Boolean recursion)
         {
-            var files = new List<string>();
+            List<string> files = new List<string>();
 
             try
             {

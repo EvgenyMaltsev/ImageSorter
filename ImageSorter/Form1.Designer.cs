@@ -3,7 +3,7 @@
 
 namespace ImageSorter
 {
-    partial class formMain
+    partial class FormMain
     {
         /// <summary>
         /// Required designer variable.
@@ -32,7 +32,7 @@ namespace ImageSorter
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formMain));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.groupBoxIn = new System.Windows.Forms.GroupBox();
             this.buttonIn = new System.Windows.Forms.Button();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
@@ -50,7 +50,7 @@ namespace ImageSorter
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.textBoxLog = new System.Windows.Forms.TextBox();
             this.groupBoxIn.SuspendLayout();
             this.groupBoxSettings.SuspendLayout();
             this.groupBoxOut.SuspendLayout();
@@ -70,20 +70,20 @@ namespace ImageSorter
             this.groupBoxIn.TabIndex = 0;
             this.groupBoxIn.TabStop = false;
             this.groupBoxIn.Text = "[ Источник ]";
-            this.groupBoxIn.DragDrop += new System.Windows.Forms.DragEventHandler(this.groupBoxIn_DragDrop);
-            this.groupBoxIn.DragEnter += new System.Windows.Forms.DragEventHandler(this.groupBoxIn_DragEnter);
+            this.groupBoxIn.DragDrop += new System.Windows.Forms.DragEventHandler(this.GroupBoxIn_DragDrop);
+            this.groupBoxIn.DragEnter += new System.Windows.Forms.DragEventHandler(this.GroupBoxIn_DragEnter);
             // 
             // buttonIn
             // 
             this.buttonIn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonIn.ImageKey = "Cornmanthe3rd-Plex-System-folder-yellow.ico";
             this.buttonIn.ImageList = this.imageList;
-            this.buttonIn.Location = new System.Drawing.Point(578, 33);
+            this.buttonIn.Location = new System.Drawing.Point(578, 30);
             this.buttonIn.Name = "buttonIn";
             this.buttonIn.Size = new System.Drawing.Size(30, 30);
             this.buttonIn.TabIndex = 1;
             this.buttonIn.UseVisualStyleBackColor = true;
-            this.buttonIn.Click += new System.EventHandler(this.buttonIn_Click);
+            this.buttonIn.Click += new System.EventHandler(this.ButtonIn_Click);
             // 
             // imageList
             // 
@@ -158,7 +158,7 @@ namespace ImageSorter
             this.buttonGo.TabIndex = 3;
             this.buttonGo.Text = "Сортировка";
             this.buttonGo.UseVisualStyleBackColor = true;
-            this.buttonGo.Click += new System.EventHandler(this.buttonGo_Click);
+            this.buttonGo.Click += new System.EventHandler(this.ButtonGo_Click);
             // 
             // groupBoxOut
             // 
@@ -172,8 +172,8 @@ namespace ImageSorter
             this.groupBoxOut.TabIndex = 1;
             this.groupBoxOut.TabStop = false;
             this.groupBoxOut.Text = "[ Назначение ]";
-            this.groupBoxOut.DragDrop += new System.Windows.Forms.DragEventHandler(this.groupBoxOut_DragDrop);
-            this.groupBoxOut.DragEnter += new System.Windows.Forms.DragEventHandler(this.groupBoxOut_DragEnter);
+            this.groupBoxOut.DragDrop += new System.Windows.Forms.DragEventHandler(this.GroupBoxOut_DragDrop);
+            this.groupBoxOut.DragEnter += new System.Windows.Forms.DragEventHandler(this.GroupBoxOut_DragEnter);
             // 
             // buttonOut
             // 
@@ -185,7 +185,7 @@ namespace ImageSorter
             this.buttonOut.Size = new System.Drawing.Size(30, 30);
             this.buttonOut.TabIndex = 1;
             this.buttonOut.UseVisualStyleBackColor = true;
-            this.buttonOut.Click += new System.EventHandler(this.buttonOut_Click);
+            this.buttonOut.Click += new System.EventHandler(this.ButtonOut_Click);
             // 
             // textBoxOut
             // 
@@ -230,7 +230,7 @@ namespace ImageSorter
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.listBox1);
+            this.groupBox1.Controls.Add(this.textBoxLog);
             this.groupBox1.Location = new System.Drawing.Point(12, 342);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(618, 165);
@@ -238,15 +238,16 @@ namespace ImageSorter
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "[ Журнал работы ]";
             // 
-            // listBox1
+            // textBoxLog
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(15, 37);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(593, 108);
-            this.listBox1.TabIndex = 3;
+            this.textBoxLog.Location = new System.Drawing.Point(15, 37);
+            this.textBoxLog.Multiline = true;
+            this.textBoxLog.Name = "textBoxLog";
+            this.textBoxLog.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBoxLog.Size = new System.Drawing.Size(593, 108);
+            this.textBoxLog.TabIndex = 4;
             // 
-            // formMain
+            // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -261,7 +262,7 @@ namespace ImageSorter
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "formMain";
+            this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Сортировщик фотографий, версия 1.0.0.0";
             this.groupBoxIn.ResumeLayout(false);
@@ -272,6 +273,7 @@ namespace ImageSorter
             this.groupBoxOut.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -295,7 +297,7 @@ namespace ImageSorter
         private System.Windows.Forms.Label labelProgress;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.TextBox textBoxLog;
     }
 }
 
