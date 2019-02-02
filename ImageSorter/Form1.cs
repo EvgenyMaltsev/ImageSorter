@@ -2,9 +2,11 @@
 // PVS-Studio Static Code Analyzer for C, C++, C#, and Java: http://www.viva64.com
 
 using System;
-using System.Collections.Generic;
 using System.IO;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace ImageSorter
 {
@@ -68,11 +70,9 @@ namespace ImageSorter
 
         private void ButtonGo_Click(object sender, EventArgs e)
         {
-            labelProgress.Text = "Обработка начата...";
+            ShowLog("Обработка начата...");
 
-            List<string> SortFiles = new List<string>();
-
-            SortFiles = GetFiles(textBoxIn.Text, "*.jpg", checkBoxHandleNestedDirectories.Checked);
+            List<string> SortFiles = GetFiles(textBoxIn.Text, "*.jpg", checkBoxHandleNestedDirectories.Checked);
 
             progressBar.Maximum = SortFiles.Count;
 
@@ -80,25 +80,17 @@ namespace ImageSorter
             {
                 if (ProcessinFiles(textBoxIn.Text, textBoxOut.Text, Path.GetFileName(sf.ToString()), checkBoxMoveFiles.Checked))
                 {
-                    textBoxLog.Text += "Обработан файл: " + Path.GetFileName(sf.ToString()) + '\r' + '\n';
-                    labelProgress.Text = "Обработан файл: " + Path.GetFileName(sf.ToString());
+                    ShowLog("Обработан файл: " + Path.GetFileName(sf.ToString()));
                 }
                 else
                 {
-                    textBoxLog.Text += "Ошибка обработки файла: " + Path.GetFileName(sf.ToString()) + '\r' + '\n';
-                    labelProgress.Text = "Ошибка обработки файла: " + Path.GetFileName(sf.ToString());
+                    ShowLog("Ошибка обработки файла: " + Path.GetFileName(sf.ToString()));
                 }
 
-                textBoxLog.SelectionStart = textBoxLog.Text.Length - 1;
-                textBoxLog.ScrollToCaret();
                 progressBar.Value += 1;
-                Application.DoEvents();
             }
 
-            labelProgress.Text = "Обработка файлов окончена.";
-            textBoxLog.Text += "Обработка файлов окончена.";
-            textBoxLog.SelectionStart = textBoxLog.Text.Length - 1;
-            textBoxLog.ScrollToCaret();
+            ShowLog("Обработка файлов окончена.");
         }
 
         private Boolean ProcessinFiles(string inpath, string outpath, string filename, Boolean movefiles)
@@ -106,17 +98,24 @@ namespace ImageSorter
             Boolean status = true;
 
             string infile = Path.Combine(inpath, filename);
-            string outfile = Path.Combine(outpath, filename);
+            string newcatalog = Path.Combine(outpath, GetExifData(infile));
+            string outfile = Path.Combine(newcatalog, filename);
 
             try
             {
+                DirectoryInfo dirInfo = new DirectoryInfo(newcatalog);
+                if (!dirInfo.Exists)
+                {
+                    dirInfo.Create();
+                }
+
                 if (movefiles)
                 {
-                    File.Move(Path.Combine(inpath, filename), Path.Combine(outpath, filename));
+                    File.Move(sourceFileName: infile, destFileName: outfile);
                 }
                 else
                 {
-                    File.Copy(Path.Combine(inpath, filename), Path.Combine(outpath, filename));
+                    File.Copy(sourceFileName: infile, destFileName: outfile);
                 }
             }
             catch
@@ -142,6 +141,38 @@ namespace ImageSorter
             catch (UnauthorizedAccessException) { }
 
             return files;
+        }
+
+        private string GetExifData(string filename)
+        {
+            string ExifData;
+
+            try
+            {
+                using (FileStream fs = new FileStream(filename, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                {
+                    Image myImage = Image.FromStream(fs);               
+                    PropertyItem propItem = myImage.GetPropertyItem(36867);
+                    string dateTaken = new System.Text.RegularExpressions.Regex(":").Replace(System.Text.Encoding.UTF8.GetString(propItem.Value), "-", 2);
+                    ExifData = System.DateTime.Parse(dateTaken).ToString("yyyy-MM-dd");
+                }
+            }
+            catch
+            {
+                ExifData = "Неизвестно";
+            }
+
+            return ExifData;
+        }
+
+        private void ShowLog(string message)
+        {
+            labelProgress.Text = message;
+            textBoxLog.Text += message + '\r' + '\n';
+            textBoxLog.SelectionStart = textBoxLog.Text.Length - 1;
+            textBoxLog.ScrollToCaret();
+
+            Application.DoEvents();
         }
     }
 }
