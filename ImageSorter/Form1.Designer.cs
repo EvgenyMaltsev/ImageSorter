@@ -33,54 +33,40 @@ namespace ImageSorter
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
-            this.groupBoxIn = new System.Windows.Forms.GroupBox();
             this.buttonIn = new System.Windows.Forms.Button();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
-            this.textBoxIn = new System.Windows.Forms.TextBox();
-            this.groupBoxSettings = new System.Windows.Forms.GroupBox();
-            this.checkBoxLeaveErrorFiles = new System.Windows.Forms.CheckBox();
-            this.checkBoxHandleNestedDirectories = new System.Windows.Forms.CheckBox();
-            this.checkBoxMoveFiles = new System.Windows.Forms.CheckBox();
+            this.TextBoxIn = new System.Windows.Forms.TextBox();
             this.buttonGo = new System.Windows.Forms.Button();
-            this.groupBoxOut = new System.Windows.Forms.GroupBox();
             this.buttonOut = new System.Windows.Forms.Button();
-            this.textBoxOut = new System.Windows.Forms.TextBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.TextBoxOut = new System.Windows.Forms.TextBox();
             this.labelProgress = new System.Windows.Forms.Label();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.checkBoxLeaveErrorFiles = new System.Windows.Forms.CheckBox();
+            this.checkBoxHandleNestedDirectories = new System.Windows.Forms.CheckBox();
+            this.checkBoxMoveFiles = new System.Windows.Forms.CheckBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.textBoxLog = new System.Windows.Forms.TextBox();
-            this.groupBoxIn.SuspendLayout();
-            this.groupBoxSettings.SuspendLayout();
-            this.groupBoxOut.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // groupBoxIn
-            // 
-            this.groupBoxIn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBoxIn.Controls.Add(this.buttonIn);
-            this.groupBoxIn.Controls.Add(this.textBoxIn);
-            this.groupBoxIn.Location = new System.Drawing.Point(12, 12);
-            this.groupBoxIn.Name = "groupBoxIn";
-            this.groupBoxIn.Size = new System.Drawing.Size(618, 81);
-            this.groupBoxIn.TabIndex = 0;
-            this.groupBoxIn.TabStop = false;
-            this.groupBoxIn.Text = "[ Источник ]";
-            this.groupBoxIn.DragDrop += new System.Windows.Forms.DragEventHandler(this.GroupBoxIn_DragDrop);
-            this.groupBoxIn.DragEnter += new System.Windows.Forms.DragEventHandler(this.GroupBoxIn_DragEnter);
             // 
             // buttonIn
             // 
             this.buttonIn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonIn.ImageKey = "Cornmanthe3rd-Plex-System-folder-yellow.ico";
             this.buttonIn.ImageList = this.imageList;
-            this.buttonIn.Location = new System.Drawing.Point(578, 30);
+            this.buttonIn.Location = new System.Drawing.Point(817, 23);
+            this.buttonIn.Margin = new System.Windows.Forms.Padding(4);
             this.buttonIn.Name = "buttonIn";
-            this.buttonIn.Size = new System.Drawing.Size(30, 30);
+            this.buttonIn.Size = new System.Drawing.Size(22, 22);
             this.buttonIn.TabIndex = 1;
             this.buttonIn.UseVisualStyleBackColor = true;
             this.buttonIn.Click += new System.EventHandler(this.ButtonIn_Click);
@@ -91,37 +77,148 @@ namespace ImageSorter
             this.imageList.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList.Images.SetKeyName(0, "Cornmanthe3rd-Plex-System-folder-yellow.ico");
             // 
-            // textBoxIn
+            // TextBoxIn
             // 
-            this.textBoxIn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxIn.Location = new System.Drawing.Point(15, 36);
-            this.textBoxIn.Name = "textBoxIn";
-            this.textBoxIn.ReadOnly = true;
-            this.textBoxIn.Size = new System.Drawing.Size(557, 20);
-            this.textBoxIn.TabIndex = 0;
-            this.textBoxIn.TabStop = false;
-            // 
-            // groupBoxSettings
-            // 
-            this.groupBoxSettings.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.TextBoxIn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBoxSettings.Controls.Add(this.checkBoxLeaveErrorFiles);
-            this.groupBoxSettings.Controls.Add(this.checkBoxHandleNestedDirectories);
-            this.groupBoxSettings.Controls.Add(this.checkBoxMoveFiles);
-            this.groupBoxSettings.Location = new System.Drawing.Point(12, 274);
-            this.groupBoxSettings.Name = "groupBoxSettings";
-            this.groupBoxSettings.Size = new System.Drawing.Size(618, 62);
-            this.groupBoxSettings.TabIndex = 2;
-            this.groupBoxSettings.TabStop = false;
-            this.groupBoxSettings.Text = "[ Параметры ]";
+            this.TextBoxIn.Location = new System.Drawing.Point(106, 23);
+            this.TextBoxIn.Margin = new System.Windows.Forms.Padding(4);
+            this.TextBoxIn.Name = "TextBoxIn";
+            this.TextBoxIn.ReadOnly = true;
+            this.TextBoxIn.Size = new System.Drawing.Size(699, 22);
+            this.TextBoxIn.TabIndex = 0;
+            this.TextBoxIn.TabStop = false;
+            this.TextBoxIn.DragDrop += new System.Windows.Forms.DragEventHandler(this.TextBoxIn_DragDrop);
+            this.TextBoxIn.DragEnter += new System.Windows.Forms.DragEventHandler(this.TextBoxIn_DragEnter);
+            // 
+            // buttonGo
+            // 
+            this.buttonGo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonGo.Location = new System.Drawing.Point(718, 193);
+            this.buttonGo.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonGo.Name = "buttonGo";
+            this.buttonGo.Size = new System.Drawing.Size(121, 28);
+            this.buttonGo.TabIndex = 3;
+            this.buttonGo.Text = "Сортировка";
+            this.buttonGo.UseVisualStyleBackColor = true;
+            this.buttonGo.Click += new System.EventHandler(this.ButtonGo_Click);
+            // 
+            // buttonOut
+            // 
+            this.buttonOut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonOut.ImageKey = "Cornmanthe3rd-Plex-System-folder-yellow.ico";
+            this.buttonOut.ImageList = this.imageList;
+            this.buttonOut.Location = new System.Drawing.Point(817, 57);
+            this.buttonOut.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonOut.Name = "buttonOut";
+            this.buttonOut.Size = new System.Drawing.Size(22, 22);
+            this.buttonOut.TabIndex = 1;
+            this.buttonOut.UseVisualStyleBackColor = true;
+            this.buttonOut.Click += new System.EventHandler(this.ButtonOut_Click);
+            // 
+            // TextBoxOut
+            // 
+            this.TextBoxOut.Location = new System.Drawing.Point(106, 57);
+            this.TextBoxOut.Margin = new System.Windows.Forms.Padding(4);
+            this.TextBoxOut.Name = "TextBoxOut";
+            this.TextBoxOut.ReadOnly = true;
+            this.TextBoxOut.Size = new System.Drawing.Size(699, 22);
+            this.TextBoxOut.TabIndex = 0;
+            this.TextBoxOut.TabStop = false;
+            this.TextBoxOut.DragDrop += new System.Windows.Forms.DragEventHandler(this.TextBoxOut_DragDrop);
+            this.TextBoxOut.DragEnter += new System.Windows.Forms.DragEventHandler(this.TextBoxOut_DragEnter);
+            // 
+            // labelProgress
+            // 
+            this.labelProgress.Location = new System.Drawing.Point(9, 119);
+            this.labelProgress.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelProgress.Name = "labelProgress";
+            this.labelProgress.Size = new System.Drawing.Size(827, 16);
+            this.labelProgress.TabIndex = 1;
+            this.labelProgress.Text = "Ожидание...";
+            // 
+            // progressBar
+            // 
+            this.progressBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.progressBar.Location = new System.Drawing.Point(12, 139);
+            this.progressBar.Margin = new System.Windows.Forms.Padding(4);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(827, 28);
+            this.progressBar.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(9, 26);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(71, 17);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Источник";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(9, 60);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(89, 17);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Назначение";
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(856, 259);
+            this.tabControl1.TabIndex = 6;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.buttonGo);
+            this.tabPage1.Controls.Add(this.labelProgress);
+            this.tabPage1.Controls.Add(this.progressBar);
+            this.tabPage1.Controls.Add(this.buttonOut);
+            this.tabPage1.Controls.Add(this.label2);
+            this.tabPage1.Controls.Add(this.buttonIn);
+            this.tabPage1.Controls.Add(this.label1);
+            this.tabPage1.Controls.Add(this.TextBoxIn);
+            this.tabPage1.Controls.Add(this.TextBoxOut);
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(848, 230);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Основное";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.checkBoxLeaveErrorFiles);
+            this.tabPage2.Controls.Add(this.checkBoxHandleNestedDirectories);
+            this.tabPage2.Controls.Add(this.checkBoxMoveFiles);
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(848, 230);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Настройки";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // checkBoxLeaveErrorFiles
             // 
             this.checkBoxLeaveErrorFiles.AutoSize = true;
-            this.checkBoxLeaveErrorFiles.Location = new System.Drawing.Point(428, 36);
+            this.checkBoxLeaveErrorFiles.Location = new System.Drawing.Point(12, 72);
+            this.checkBoxLeaveErrorFiles.Margin = new System.Windows.Forms.Padding(4);
             this.checkBoxLeaveErrorFiles.Name = "checkBoxLeaveErrorFiles";
-            this.checkBoxLeaveErrorFiles.Size = new System.Drawing.Size(180, 17);
-            this.checkBoxLeaveErrorFiles.TabIndex = 2;
+            this.checkBoxLeaveErrorFiles.Size = new System.Drawing.Size(234, 21);
+            this.checkBoxLeaveErrorFiles.TabIndex = 3;
             this.checkBoxLeaveErrorFiles.Text = "Оставлять ошибочные файлы ";
             this.checkBoxLeaveErrorFiles.UseVisualStyleBackColor = true;
             // 
@@ -130,10 +227,11 @@ namespace ImageSorter
             this.checkBoxHandleNestedDirectories.AutoSize = true;
             this.checkBoxHandleNestedDirectories.Checked = true;
             this.checkBoxHandleNestedDirectories.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxHandleNestedDirectories.Location = new System.Drawing.Point(182, 36);
+            this.checkBoxHandleNestedDirectories.Location = new System.Drawing.Point(12, 14);
+            this.checkBoxHandleNestedDirectories.Margin = new System.Windows.Forms.Padding(4);
             this.checkBoxHandleNestedDirectories.Name = "checkBoxHandleNestedDirectories";
-            this.checkBoxHandleNestedDirectories.Size = new System.Drawing.Size(210, 17);
-            this.checkBoxHandleNestedDirectories.TabIndex = 1;
+            this.checkBoxHandleNestedDirectories.Size = new System.Drawing.Size(268, 21);
+            this.checkBoxHandleNestedDirectories.TabIndex = 2;
             this.checkBoxHandleNestedDirectories.Text = "Обрабатывать вложенные каталоги";
             this.checkBoxHandleNestedDirectories.UseVisualStyleBackColor = true;
             // 
@@ -142,161 +240,80 @@ namespace ImageSorter
             this.checkBoxMoveFiles.AutoSize = true;
             this.checkBoxMoveFiles.Checked = true;
             this.checkBoxMoveFiles.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxMoveFiles.Location = new System.Drawing.Point(15, 36);
+            this.checkBoxMoveFiles.Location = new System.Drawing.Point(12, 43);
+            this.checkBoxMoveFiles.Margin = new System.Windows.Forms.Padding(4);
             this.checkBoxMoveFiles.Name = "checkBoxMoveFiles";
-            this.checkBoxMoveFiles.Size = new System.Drawing.Size(129, 17);
-            this.checkBoxMoveFiles.TabIndex = 0;
+            this.checkBoxMoveFiles.Size = new System.Drawing.Size(163, 21);
+            this.checkBoxMoveFiles.TabIndex = 1;
             this.checkBoxMoveFiles.Text = "Перемещать файлы";
             this.checkBoxMoveFiles.UseVisualStyleBackColor = true;
             // 
-            // buttonGo
+            // tabPage3
             // 
-            this.buttonGo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonGo.Location = new System.Drawing.Point(539, 513);
-            this.buttonGo.Name = "buttonGo";
-            this.buttonGo.Size = new System.Drawing.Size(91, 23);
-            this.buttonGo.TabIndex = 3;
-            this.buttonGo.Text = "Сортировка";
-            this.buttonGo.UseVisualStyleBackColor = true;
-            this.buttonGo.Click += new System.EventHandler(this.ButtonGo_Click);
-            // 
-            // groupBoxOut
-            // 
-            this.groupBoxOut.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBoxOut.Controls.Add(this.buttonOut);
-            this.groupBoxOut.Controls.Add(this.textBoxOut);
-            this.groupBoxOut.Location = new System.Drawing.Point(12, 99);
-            this.groupBoxOut.Name = "groupBoxOut";
-            this.groupBoxOut.Size = new System.Drawing.Size(618, 81);
-            this.groupBoxOut.TabIndex = 1;
-            this.groupBoxOut.TabStop = false;
-            this.groupBoxOut.Text = "[ Назначение ]";
-            this.groupBoxOut.DragDrop += new System.Windows.Forms.DragEventHandler(this.GroupBoxOut_DragDrop);
-            this.groupBoxOut.DragEnter += new System.Windows.Forms.DragEventHandler(this.GroupBoxOut_DragEnter);
-            // 
-            // buttonOut
-            // 
-            this.buttonOut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonOut.ImageKey = "Cornmanthe3rd-Plex-System-folder-yellow.ico";
-            this.buttonOut.ImageList = this.imageList;
-            this.buttonOut.Location = new System.Drawing.Point(578, 30);
-            this.buttonOut.Name = "buttonOut";
-            this.buttonOut.Size = new System.Drawing.Size(30, 30);
-            this.buttonOut.TabIndex = 1;
-            this.buttonOut.UseVisualStyleBackColor = true;
-            this.buttonOut.Click += new System.EventHandler(this.ButtonOut_Click);
-            // 
-            // textBoxOut
-            // 
-            this.textBoxOut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxOut.Location = new System.Drawing.Point(15, 36);
-            this.textBoxOut.Name = "textBoxOut";
-            this.textBoxOut.ReadOnly = true;
-            this.textBoxOut.Size = new System.Drawing.Size(557, 20);
-            this.textBoxOut.TabIndex = 0;
-            this.textBoxOut.TabStop = false;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.labelProgress);
-            this.groupBox2.Controls.Add(this.progressBar);
-            this.groupBox2.Location = new System.Drawing.Point(12, 187);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(618, 81);
-            this.groupBox2.TabIndex = 4;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "[ Прогресс ]";
-            // 
-            // labelProgress
-            // 
-            this.labelProgress.Location = new System.Drawing.Point(15, 26);
-            this.labelProgress.Name = "labelProgress";
-            this.labelProgress.Size = new System.Drawing.Size(593, 13);
-            this.labelProgress.TabIndex = 1;
-            this.labelProgress.Text = "Ожидание...";
-            // 
-            // progressBar
-            // 
-            this.progressBar.Location = new System.Drawing.Point(15, 42);
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(593, 23);
-            this.progressBar.TabIndex = 0;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.textBoxLog);
-            this.groupBox1.Location = new System.Drawing.Point(12, 342);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(618, 165);
-            this.groupBox1.TabIndex = 5;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "[ Журнал работы ]";
+            this.tabPage3.Controls.Add(this.textBoxLog);
+            this.tabPage3.Location = new System.Drawing.Point(4, 25);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(848, 230);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Журнал работы";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // textBoxLog
             // 
-            this.textBoxLog.Location = new System.Drawing.Point(15, 37);
+            this.textBoxLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxLog.Location = new System.Drawing.Point(3, 3);
+            this.textBoxLog.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxLog.Multiline = true;
             this.textBoxLog.Name = "textBoxLog";
             this.textBoxLog.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBoxLog.Size = new System.Drawing.Size(593, 108);
-            this.textBoxLog.TabIndex = 4;
+            this.textBoxLog.Size = new System.Drawing.Size(842, 224);
+            this.textBoxLog.TabIndex = 5;
             // 
             // FormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(642, 548);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBoxOut);
-            this.Controls.Add(this.buttonGo);
-            this.Controls.Add(this.groupBoxSettings);
-            this.Controls.Add(this.groupBoxIn);
+            this.ClientSize = new System.Drawing.Size(856, 259);
+            this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Сортировщик фотографий, версия 1.0.0.0";
-            this.groupBoxIn.ResumeLayout(false);
-            this.groupBoxIn.PerformLayout();
-            this.groupBoxSettings.ResumeLayout(false);
-            this.groupBoxSettings.PerformLayout();
-            this.groupBoxOut.ResumeLayout(false);
-            this.groupBoxOut.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.GroupBox groupBoxIn;
-        private System.Windows.Forms.GroupBox groupBoxSettings;
-        private System.Windows.Forms.TextBox textBoxIn;
-        private System.Windows.Forms.CheckBox checkBoxLeaveErrorFiles;
-        private System.Windows.Forms.CheckBox checkBoxHandleNestedDirectories;
-        private System.Windows.Forms.CheckBox checkBoxMoveFiles;
+        private System.Windows.Forms.TextBox TextBoxIn;
         private System.Windows.Forms.Button buttonGo;
         private System.Windows.Forms.Button buttonIn;
         private System.Windows.Forms.ImageList imageList;
-        private System.Windows.Forms.GroupBox groupBoxOut;
         private System.Windows.Forms.Button buttonOut;
-        private System.Windows.Forms.TextBox textBoxOut;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.TextBox TextBoxOut;
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Label labelProgress;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.CheckBox checkBoxLeaveErrorFiles;
+        private System.Windows.Forms.CheckBox checkBoxHandleNestedDirectories;
+        private System.Windows.Forms.CheckBox checkBoxMoveFiles;
+        private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TextBox textBoxLog;
     }
 }

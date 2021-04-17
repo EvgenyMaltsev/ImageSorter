@@ -16,15 +16,15 @@ namespace ImageSorter
         {
             InitializeComponent();
 
-            groupBoxIn.AllowDrop = true;
-            groupBoxOut.AllowDrop = true;
+            TextBoxIn.AllowDrop = true;
+            TextBoxOut.AllowDrop = true;
         }
 
         private void ButtonIn_Click(object sender, EventArgs e)
         {
             if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
             {
-                textBoxIn.Text = folderBrowserDialog.SelectedPath;
+                TextBoxIn.Text = folderBrowserDialog.SelectedPath;
             }
         }
 
@@ -32,39 +32,7 @@ namespace ImageSorter
         {
             if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
             {
-                textBoxOut.Text = folderBrowserDialog.SelectedPath;
-            }
-        }
-
-        private void GroupBoxIn_DragEnter(object sender, DragEventArgs e)
-        {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop) && ((e.AllowedEffect & DragDropEffects.Move) == DragDropEffects.Move))
-                e.Effect = DragDropEffects.Move;
-        }
-
-        private void GroupBoxIn_DragDrop(object sender, DragEventArgs e)
-        {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop) && e.Effect == DragDropEffects.Move)
-            {
-                string[] objects = (string[])e.Data.GetData(DataFormats.FileDrop);
-                FileInfo fileInf = new FileInfo(objects[0]);
-                textBoxIn.Text = fileInf.DirectoryName;
-            }
-        }
-
-        private void GroupBoxOut_DragEnter(object sender, DragEventArgs e)
-        {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop) && ((e.AllowedEffect & DragDropEffects.Move) == DragDropEffects.Move))
-                e.Effect = DragDropEffects.Move;
-        }
-
-        private void GroupBoxOut_DragDrop(object sender, DragEventArgs e)
-        {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop) && e.Effect == DragDropEffects.Move)
-            {
-                string[] objects = (string[])e.Data.GetData(DataFormats.FileDrop);
-                FileInfo fileInf = new FileInfo(objects[0]);
-                textBoxOut.Text = fileInf.DirectoryName;
+                TextBoxOut.Text = folderBrowserDialog.SelectedPath;
             }
         }
 
@@ -72,13 +40,13 @@ namespace ImageSorter
         {
             ShowLog("Обработка начата...");
 
-            List<string> SortFiles = GetFiles(textBoxIn.Text, "*.jpg", checkBoxHandleNestedDirectories.Checked);
+            List<string> SortFiles = GetFiles(TextBoxIn.Text, "*.jpg", checkBoxHandleNestedDirectories.Checked);
 
             progressBar.Maximum = SortFiles.Count;
 
             foreach (string sf in SortFiles)
             {
-                if (ProcessinFiles(textBoxIn.Text, textBoxOut.Text, Path.GetFileName(sf.ToString()), checkBoxMoveFiles.Checked))
+                if (ProcessinFiles(TextBoxIn.Text, TextBoxOut.Text, Path.GetFileName(sf.ToString()), checkBoxMoveFiles.Checked))
                 {
                     ShowLog("Обработан файл: " + Path.GetFileName(sf.ToString()));
                 }
@@ -173,6 +141,42 @@ namespace ImageSorter
             textBoxLog.ScrollToCaret();
 
             Application.DoEvents();
+        }
+
+        private void TextBoxIn_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop) && ((e.AllowedEffect & DragDropEffects.Move) == DragDropEffects.Move))
+            {
+                e.Effect = DragDropEffects.Move;
+            }
+        }
+
+        private void TextBoxIn_DragDrop(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop) && e.Effect == DragDropEffects.Move)
+            {
+                string[] objects = (string[])e.Data.GetData(DataFormats.FileDrop);
+                FileInfo fileInf = new FileInfo(objects[0]);
+                TextBoxIn.Text = fileInf.DirectoryName;
+            }
+        }
+
+        private void TextBoxOut_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop) && ((e.AllowedEffect & DragDropEffects.Move) == DragDropEffects.Move))
+            {
+                e.Effect = DragDropEffects.Move;
+            }
+        }
+
+        private void TextBoxOut_DragDrop(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop) && e.Effect == DragDropEffects.Move)
+            {
+                string[] objects = (string[])e.Data.GetData(DataFormats.FileDrop);
+                FileInfo fileInf = new FileInfo(objects[0]);
+                TextBoxOut.Text = fileInf.DirectoryName;
+            }
         }
     }
 }
